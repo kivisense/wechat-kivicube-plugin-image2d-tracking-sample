@@ -1,0 +1,7 @@
+<view class="loading">
+  <view class="box">
+    <view class="circle"></view>
+    <image src="/assets/loading.png"></image>
+    <view class="text">Loading...</view>
+  </view>
+</view>

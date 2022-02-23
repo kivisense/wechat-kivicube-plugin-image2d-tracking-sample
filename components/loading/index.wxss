@@ -1,0 +1,39 @@
+.loading {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(46, 49, 53, 1);
+}
+
+.box {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 92.27vw;
+  width: 92.27vw;
+}
+
+.box image {
+  position: absolute;
+  height: 100%;
+  width: 100%
+}
+
+.text {
+  position: absolute;
+  bottom: 2.93vw;
+  font-size: 3.73vw;
+  color: rgba(196, 196, 205, 1)
+}
+
+.circle{
+  position: absolute;
+  width: 58.67vw;
+  height: 58.67vw;
+  border-radius: 50%;
+  border: 3px solid;
+  border-color: #ffffff;
+}

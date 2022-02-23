@@ -1,0 +1,23 @@
+<!--pages/scene/scene.wxml-->
+<kivicube-scene
+    class="kivicube"
+    scene-id="JCLAW9Ongs8vzC5AxfeyhnO6VZyyMxOf"
+    resolution="high"
+    binderror="error"
+    bindready="ready"
+    bindopenUrl="openUrl"
+    bindphoto="photo"
+    bindsceneStart="sceneStart"
+    binddownloadAssetStart="downloadAssetStart"
+    binddownloadAssetEnd="downloadAssetEnd"
+    bindloadSceneStart="loadSceneStart"
+    bindloadSceneEnd="loadSceneEnd"
+    bindtracked="tracked"
+    bindlostTrack="lostTrack"
+    hideScan
+    hideLoading
+    hideDownload
+/>
+<scanning class="scan" wx:if="{{scanning}}"></scanning>
+<loading class="loading" wx:if="{{loading}}"></loading>
+
