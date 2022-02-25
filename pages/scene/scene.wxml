@@ -1,7 +1,7 @@
 <!--pages/scene/scene.wxml-->
 <kivicube-scene
     class="kivicube"
-    scene-id="JCLAW9Ongs8vzC5AxfeyhnO6VZyyMxOf"
+    scene-id="0d7wc3gZtdDu1VQEGdcGkXF88UzWUgXJ"
     resolution="high"
     binderror="error"
     bindready="ready"
@@ -17,7 +17,8 @@
     hideScan
     hideLoading
     hideDownload
+    hideTakePhoto
 />
 <scanning class="scan" wx:if="{{scanning}}"></scanning>
 <loading class="loading" wx:if="{{loading}}"></loading>
-
+<image class="photo" wx:if="{{photoing}}" bindtap="takePhoto" src="/assets/take-photo.png"></image>

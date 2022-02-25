@@ -10,6 +10,7 @@ Page({
   start() {
     wx.navigateTo({
       url: '../scene/scene',
+      // url: '../photo/photo',
     })
   }
   

@@ -1,0 +1,56 @@
+page {
+    overflow: hidden;
+}
+.photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    background: linear-gradient(134deg, #0E345F 0%, #411A46 100%);
+    box-sizing: border-box;
+    margin-bottom: 1000px;
+}
+.picture {
+    position: relative;
+    margin-top: 3.2vw;
+    width: 86.93vw;
+    height: calc(100% - 30vw);
+    overflow: hidden;
+}
+
+.picture image {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.btns {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    gap: 15.2vw;
+}
+
+.btn {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 26.67vw;
+    height: 12.8vw;
+    color: #ffffff;
+    font-size: 4vw;
+}
+
+.btn image {
+    width: 100%;
+    height: 100%;
+}
+.btn text {
+    position: absolute;
+}
+
+#canvas {
+    width: 652px;
+    height: 1104px;
+}
