@@ -19,17 +19,17 @@
 .box image {
   position: absolute;
   height: 100%;
-  width: 100%
+  width: 100%;
 }
 
 .text {
   position: absolute;
   bottom: 2.93vw;
   font-size: 3.73vw;
-  color: rgba(196, 196, 205, 1)
+  color: rgba(196, 196, 205, 1);
 }
 
-.circle{
+.circle {
   position: absolute;
   width: 58.67vw;
   height: 58.67vw;
