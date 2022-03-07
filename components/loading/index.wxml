@@ -1,6 +1,12 @@
 <view class="loading">
   <view class="box">
-    <view class="circle"></view>
+    <view class="progress-bar">
+      <progress-bar class="progress-bar" progress="{{progress}}"></progress-bar>
+      <view class="progress" style="transform: translate({{posX}}vw, {{posY}}vw)">
+        <image src="../../assets/progress.png"></image>
+        <text>{{progress}}%</text>
+      </view>
+    </view>
     <image src="/assets/loading.png"></image>
     <view class="text">Loading...</view>
   </view>

@@ -1,0 +1,45 @@
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(46, 49, 53, 1);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sm {
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+}
+
+.left,
+.right {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  float: left;
+  background-color: #fff;
+}
+.left {
+  border-radius: 10000px 0 0 10000px;
+}
+.right {
+  border-radius: 0 10000px 10000px 0;
+}
+.ring {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(46, 49, 53, 1);
+}
+.right .ring {
+  transform-origin: left center;
+}
+.left .ring {
+  transform-origin: right center;
+}

@@ -7,6 +7,7 @@ Page({
     loading: false,
     photoing: false,
     showScene: false,
+    progress: 0,
   },
 
   onLoad: async function (options) {
@@ -36,10 +37,10 @@ Page({
     // test
     // wx.hideLoading({
     //   success: (res) => {},
-    // })
+    // });
     // this.setData({
-    //     loading: true
-    // })
+    //   loading: true,
+    // });
   },
 
   onShow: function () {},
@@ -68,7 +69,6 @@ Page({
   },
 
   sceneStart: function () {
-    console.log("start");
     this.stopAnim();
     if (typeof this.view.getObject === "function") {
       this.model = this.view.getObject("image");
@@ -134,12 +134,9 @@ Page({
     });
   },
 
-  loadSceneStart: function () {
-    console.log("loading");
-  },
+  loadSceneStart: function () {},
 
   tracked: function () {
-    console.log("tracked");
     this.playAnim();
   },
 
@@ -152,6 +149,12 @@ Page({
     const photoPath = await this.view.takePhoto();
     wx.navigateTo({
       url: `/pages/photo/photo?photo=${encodeURIComponent(photoPath)}`,
+    });
+  },
+
+  downloadAssetProgress: function ({ detail }) {
+    this.setData({
+      progress: detail * 100,
     });
   },
 });

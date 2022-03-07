@@ -3,7 +3,7 @@
     <kivicube-scene
         wx:if="{{showScene}}"
         class="kivicube"
-        scene-id="0d7wc3gZtdDu1VQEGdcGkXF88UzWUgXJ"
+        scene-id="CxTr7V05XNRd6118cqz8yhBeJTXZXNue"
         resolution="high"
         binderror="error"
         bindready="ready"
@@ -11,6 +11,7 @@
         bindphoto="photo"
         bindsceneStart="sceneStart"
         binddownloadAssetStart="downloadAssetStart"
+        binddownloadAssetProgress="downloadAssetProgress"
         binddownloadAssetEnd="downloadAssetEnd"
         bindloadSceneStart="loadSceneStart"
         bindloadSceneEnd="loadSceneEnd"
@@ -22,6 +23,6 @@
         hideTakePhoto
     />
     <scanning class="scan" wx:if="{{scanning}}"></scanning>
-    <loading class="loading" wx:if="{{loading}}"></loading>
+    <loading class="loading" wx:if="{{loading}}" progress="{{progress}}"></loading>
     <image class="photo" wx:if="{{photoing}}" bindtap="takePhoto" src="/assets/take-photo.png"></image>
 </view>

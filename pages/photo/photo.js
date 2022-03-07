@@ -10,8 +10,7 @@ Page({
   },
   async onLoad({ photo: photoUrl }) {
     const info = await wx.getSystemInfoSync();
-    console.log(info);
-    // wx.showLoading({ title: "加载中...", mask: true });
+    wx.showLoading({ title: "加载中...", mask: true });
     const res = await new Promise((resolve) => {
       wx.createSelectorQuery()
         .select("#canvas")
@@ -66,7 +65,6 @@ Page({
           fileType: "jpg",
           canvas,
           success: (res) => {
-            console.log("rrres", res);
             resolve(res.tempFilePath);
           },
           fail: (e) => {
