@@ -1,3 +1,5 @@
+const { setAuth } = require("../../utils/util");
+
 Page({
   data: {
     photo: "",
@@ -7,7 +9,9 @@ Page({
     title: `伊弥戟`,
   },
   async onLoad({ photo: photoUrl }) {
-    console.log(photoUrl);
+    const info = await wx.getSystemInfoSync();
+    console.log(info);
+    // wx.showLoading({ title: "加载中...", mask: true });
     const res = await new Promise((resolve) => {
       wx.createSelectorQuery()
         .select("#canvas")
@@ -18,7 +22,6 @@ Page({
         .exec((els) => resolve(els[0]));
     });
     const canvas = res.node;
-    console.log(canvas);
     const ctx = canvas.getContext("2d");
     const { width, height } = res;
     canvas.width = width;
@@ -43,8 +46,6 @@ Page({
       // 比frame宽，截取宽度
       photoWidth = photoWidth - (photoWidth - photoHeight * (width / height));
     }
-    console.log("pphoto", photo);
-    console.log(ctx, photo, photoWidth, photoHeight, width, height);
     ctx.drawImage(
       photo,
       (photo.width - photoWidth) / 2,
@@ -58,6 +59,7 @@ Page({
     );
     ctx.drawImage(frame, 0, 0, frame.width, frame.height, 0, 0, width, height);
     const page = this;
+    // 小程序canvas似乎有bug，需要延时执行，否则可能生成空白图片
     setTimeout(async () => {
       const pic = await new Promise((resolve) => {
         wx.canvasToTempFilePath({
@@ -75,13 +77,21 @@ Page({
       page.setData({
         photo: pic,
       });
+      wx.hideLoading();
     }, 500);
   },
 
   onShareAppMessage() {
     return this.shareInformation;
   },
-  save() {
+  async save() {
+    const userAuth = await setAuth(
+      "scope.writePhotosAlbum",
+      "相册权限被拒绝",
+      "保存照片需要您授予相册权限"
+    );
+    if (!userAuth)
+      return wx.showToast({ title: "保存照片失败, 需要相机权限", icon: none });
     wx.saveImageToPhotosAlbum({
       filePath: this.data.photo,
       success() {
@@ -89,7 +99,7 @@ Page({
       },
       fail(e) {
         console.error("保存照片失败", e);
-        wx.showToast({ title: "保存照片失败", icon: "none" });
+        wx.showToast({ title: "保存照片失败", icon: none });
       },
     });
   },

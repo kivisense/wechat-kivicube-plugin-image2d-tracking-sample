@@ -1,15 +1,11 @@
 {
-  "pages":[
-    "pages/index/index",
-    "pages/logs/logs",
-    "pages/scene/scene",
-    "pages/photo/photo"
-  ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "pages": ["pages/index/index", "pages/scene/scene", "pages/photo/photo"],
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
   },
   "plugins": {
     "kivicube": {

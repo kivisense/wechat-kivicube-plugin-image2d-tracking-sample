@@ -1,18 +1,34 @@
 // pages/scene/scene.js
+import { setAuth } from "../../utils/util";
 Page({
   playing: false,
   data: {
     scanning: false,
     loading: false,
     photoing: false,
+    showScene: false,
   },
 
-  onLoad: function (options) {
+  onLoad: async function (options) {
     wx.setKeepScreenOn({
       keepScreenOn: true,
     });
     wx.showLoading({
       title: "加载中...",
+    });
+    const userAuthorize = await setAuth(
+      "scope.camera",
+      "摄像头权限被拒绝",
+      "AR体验需要您授予摄像头权限，摄像头权限仅用作AR体验时的本地实景画面预览"
+    );
+    if (!userAuthorize) {
+      wx.navigateTo({
+        url: "../index/index",
+      });
+      return;
+    }
+    this.setData({
+      showScene: true,
     });
   },
 
@@ -34,6 +50,9 @@ Page({
 
   onUnload: function () {
     this.stopAnim();
+    wx.setKeepScreenOn({
+      keepScreenOn: false,
+    });
   },
 
   onShareAppMessage: function () {},
@@ -42,7 +61,6 @@ Page({
     wx.hideLoading({
       success: (res) => {},
     });
-    console.log("ready", view);
     this.view = view;
     this.setData({
       loading: true,
@@ -73,7 +91,6 @@ Page({
   },
 
   play(model, name, loop, callback) {
-    console.log("play", model, name);
     if (!model) return false;
     this.stop(model);
     const names = model.getAnimationNames();
@@ -98,8 +115,6 @@ Page({
     if (!this.playing) {
       this.playing = true;
       const { model, mask } = this;
-      const names = model.getAnimationNames();
-      console.log(names);
       this.play(model, "start", false, () => this.play(model, "loop", true));
       this.play(mask);
       this.setData({
@@ -138,6 +153,5 @@ Page({
     wx.navigateTo({
       url: `/pages/photo/photo?photo=${encodeURIComponent(photoPath)}`,
     });
-    wx.hideLoading();
   },
 });
