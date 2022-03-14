@@ -3,6 +3,7 @@ Component({
     progress: 0,
   },
   data: {
+    percent: 0,
     posX: 0,
     posY: 0
   },
@@ -15,6 +16,7 @@ Component({
       this.setData({
         posX,
         posY,
+        percent: progress
       });
     }
   },

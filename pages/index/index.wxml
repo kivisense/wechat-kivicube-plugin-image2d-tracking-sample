@@ -1,7 +1,6 @@
 <!--index.wxml-->
 <view class="container">
   <image src="../../assets/home/bg.jpg" class="bg" mode="aspectFill"></image>
-  <view class="mask"></view>
   <view class="text-box">
     <image src="../../assets/home/image.png" class="image"></image>
     <image src="../../assets/home/text.png" class="text"></image>

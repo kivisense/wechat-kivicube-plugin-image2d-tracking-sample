@@ -6,5 +6,5 @@
         <image style="width: 90.13vw; height: 76.9vw;" src="/assets/scan/focus-frame.png"></image>
         <image style="width: 72.53vw; height: 51.2vw;" src="/assets/scan/id-picture.png"></image>
     </view>
-    <view class="shadow"></view>
+    <image class="shadow" mode="widthFix" src="/assets/scan/bg.png"></image>
 </view>

@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(46, 49, 53, 1);
+  background-color: rgba(239, 237, 255, 1);
 }
 
 .box {
@@ -31,8 +31,12 @@
 
 .progress-bar {
   position: absolute;
-  width: calc(58.67vw + 4px);
-  height: calc(58.67vw + 4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(58.67vw + 5px);
+  height: calc(58.67vw + 5px);
+  z-index: 9;
 }
 
 .progress {
