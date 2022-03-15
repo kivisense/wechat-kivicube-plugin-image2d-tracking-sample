@@ -10,7 +10,7 @@
     点击体验AR
   </view>
   <view class="link">
-    免费制作同款AR
+    <!-- 免费制作同款AR -->
   </view>
   <image src="../../assets/home/shadow.png" class="shadow"></image>
 </view>

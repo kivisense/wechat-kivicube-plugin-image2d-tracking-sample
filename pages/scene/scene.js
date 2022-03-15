@@ -9,6 +9,11 @@ Page({
     showScene: false,
     progress: 0,
   },
+  shareInfo: {
+    path: "/pages/scene/scene",
+    title: "AR元宇宙开启 伊弥戟王者出击",
+    imageUrl: "/assets/share.jpg"
+  },
 
   onLoad: async function (options) {
     wx.setKeepScreenOn({
@@ -55,8 +60,6 @@ Page({
       keepScreenOn: false,
     });
   },
-
-  onShareAppMessage: function () {},
 
   ready: function ({ detail: view }) {
     wx.hideLoading({
@@ -157,4 +160,9 @@ Page({
       progress: detail * 100,
     });
   },
+
+  onShareAppMessage() {
+    return this.shareInfo;
+  },
+
 });

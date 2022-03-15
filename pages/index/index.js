@@ -6,7 +6,11 @@ const app = getApp();
 
 Page({
   data: {},
-
+  shareInfo: {
+    path: "/pages/index/index",
+    title: "AR元宇宙开启 伊弥戟王者出击",
+    imageUrl: "/assets/share.jpg"
+  },
   async start() {
     const userAuthorize = await setAuth(
       "scope.camera",
@@ -18,5 +22,8 @@ Page({
       url: "../scene/scene",
       // url: "../photo/photo",
     });
+  },
+  onShareAppMessage() {
+    return this.shareInfo
   },
 });

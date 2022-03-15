@@ -5,9 +5,10 @@ Page({
     photo: "",
     marginTop: 0
   },
-  shareInformation: {
-    path: `/pages/index/index`,
-    title: `伊弥戟`,
+  shareInfo: {
+    path: "/pages/index/index",
+    title: "AR元宇宙开启 伊弥戟王者出击",
+    imageUrl: "/assets/share.jpg"
   },
   async onLoad({ photo: photoUrl }) {
     const menu = wx.getMenuButtonBoundingClientRect()
@@ -84,7 +85,7 @@ Page({
   },
 
   onShareAppMessage() {
-    return this.shareInformation;
+    return this.shareInfo;
   },
   async save() {
     const userAuth = await setAuth(
