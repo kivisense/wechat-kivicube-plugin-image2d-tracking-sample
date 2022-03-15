@@ -3,13 +3,17 @@ const { setAuth } = require("../../utils/util");
 Page({
   data: {
     photo: "",
+    marginTop: 0
   },
   shareInformation: {
     path: `/pages/index/index`,
     title: `伊弥戟`,
   },
   async onLoad({ photo: photoUrl }) {
-    const info = await wx.getSystemInfoSync();
+    const menu = wx.getMenuButtonBoundingClientRect()
+    this.setData({
+      marginTop: menu.bottom + 19
+    })
     wx.showLoading({ title: "加载中...", mask: true });
     const res = await new Promise((resolve) => {
       wx.createSelectorQuery()
