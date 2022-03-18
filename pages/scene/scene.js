@@ -38,15 +38,7 @@ Page({
     });
   },
 
-  onReady: function () {
-    // test
-    // wx.hideLoading({
-    //   success: (res) => {},
-    // });
-    // this.setData({
-    //   loading: true,
-    // });
-  },
+  onReady: function () {},
 
   onShow: function () {},
 

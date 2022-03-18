@@ -26,7 +26,7 @@
   position: absolute;
   bottom: 2.93vw;
   font-size: 3.73vw;
-  color: rgba(196, 196, 205, 1);
+  color: rgba(179, 145, 253, 1);
 }
 
 .progress-bar {
