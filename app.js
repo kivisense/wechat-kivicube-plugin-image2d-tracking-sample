@@ -15,9 +15,10 @@ App({
     const { setOptions } = requirePlugin("kivicube");
     setOptions({
       license:
-        "OA7EIJ7JB4JmAZ5CiceSt0ScZael9lB0GJTb+5YJ5B6l8idXnc3eJ5/8wlH44ZPycUu1anh7DuOremv6GKmChel5PT4WcQNqny5/vpWy4Zr7Y119sdRK7bGEpBVx6b9IpO2/otJ7e7qQza9ESKBR+0i2EaYxd9khEdWE/ofgsONfEDW+mWqT26i598ev1zbhO8lwGYbUcqhL0UIrTjdLpfG0sBp2a4WqNc3YOnoh0e5EnzRn3h1AXVHpjutf86vwuDgJKq/MTVBZ7Y3dP7K7Jbye9whYL2nrgRQkvw38nsuo/FspqweCujz7MzP1wPpYZLms2KtgGdjzSfuTbWxThQ==",
+        "AcfdnJWaXQ7aWlDQUmAQYf4reNprZ2unXTafi5NouO0sxIO3Am1bBlT8f9LMNPQW8aQgwaXni0aJ6BbcLdI5FjcQHiXcN7HqZY+IMPOfsf5Qiw9nDGZVcei0we1tawgEmDbzsV22cPK0eWQxFdurJ7gWwcvzIydctviTjsAoVFMiCQ7qs6hME2wb6zX85SoW0Cfb3DF38fhoS98XC1Zmf68cygFPGOhMZoNgW6FASzjehMkZRd6WEfpXjDiZBgsFU7PhLq98jp7fKZOrDz9TpNXDhExn+581JY4+kWDWXbMycD2JaAsqz3N2gewwg1IMZAyFufyoMRwRZrScWKrfoA==",
     });
   },
+  
   globalData: {
     userInfo: null,
   },
