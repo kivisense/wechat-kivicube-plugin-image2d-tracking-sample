@@ -12,7 +12,7 @@ Page({
   shareInfo: {
     path: "/pages/scene/scene",
     title: "AR元宇宙开启 伊弥戟王者出击",
-    imageUrl: "/assets/share.jpg"
+    imageUrl: "/assets/share.jpg",
   },
 
   onLoad: async function (options) {
@@ -38,42 +38,86 @@ Page({
     });
   },
 
-  onReady: function () {},
-
-  onShow: function () {},
-
-  onHide: function () {
-    this.stopAnim();
-  },
-
   onUnload: function () {
-    this.stopAnim();
+    this.stopAllAnim();
     wx.setKeepScreenOn({
       keepScreenOn: false,
     });
   },
 
   ready: function ({ detail: view }) {
-    wx.hideLoading({
-      success: (res) => {},
-    });
     this.view = view;
+    wx.hideLoading();
     this.setData({
       loading: true,
     });
   },
 
   sceneStart: function () {
-    this.stopAnim();
-    if (typeof this.view.getObject === "function") {
-      this.model = this.view.getObject("image");
-      this.mask = this.view.getObject("image-mask");
-    }
+    this.stopAllAnim();
     this.setData({
       scanning: true,
       loading: false,
     });
+    if (typeof this.view.getObject === "function") {
+      this.model = this.view.getObject("image");
+      this.mask = this.view.getObject("image-mask");
+      this.model.addEventListener("animationEnded", ({ animationName }) => {
+        if (animationName !== "start") return;
+        this.play(this.model, "loop", true);
+      });
+    }
     this.mask && this.mask.setEnableMask();
+  },
+
+  downloadAssetProgress: function ({ detail }) {
+    this.setData({
+      progress: detail * 100,
+    });
+  },
+
+  tracked: function () {
+    this.startAnim();
+  },
+
+  lostTrack: function () {
+    this.stopAllAnim();
+  },
+
+  startAnim() {
+    if (!this.playing) {
+      this.playing = true;
+      const { model, mask } = this;
+      this.play(model, "start", false);
+      this.play(mask, "start", false);
+      this.setData({
+        scanning: false,
+        photoing: true,
+      });
+    }
+  },
+
+  stopAllAnim() {
+    this.playing = false;
+    this.stop(this.model);
+    this.stop(this.mask);
+    this.setData({
+      scanning: true,
+      photoing: false,
+    });
+  },
+
+  play(model, name, loop) {
+    if (!model) return false;
+    this.stop(model);
+    const names = model.getAnimationNames();
+    if (!Array.isArray(names)) return;
+    if (!names.includes(name)) return false;
+    model.playAnimation({
+      name, // 动画名称
+      loop, // 是否循环播放
+      clampWhenFinished: true, // 播放完毕后是否停留在动画最后一帧
+    });
   },
 
   stop(model) {
@@ -85,60 +129,6 @@ Page({
     });
   },
 
-  play(model, name, loop, callback) {
-    if (!model) return false;
-    this.stop(model);
-    const names = model.getAnimationNames();
-    if (!Array.isArray(names)) return;
-    if (!name) {
-      name = names[0];
-    }
-    if (!names.includes(name)) return false;
-    model.playAnimation({
-      name, // 动画名称
-      loop, // 是否循环播放
-      clampWhenFinished: true, // 播放完毕后是否停留在动画最后一帧
-    });
-    callback &&
-      model.addEventListener("animationEnded", ({ animationName }) => {
-        if (animationName !== name) return;
-        callback();
-      });
-  },
-
-  playAnim() {
-    if (!this.playing) {
-      this.playing = true;
-      const { model, mask } = this;
-      this.play(model, "start", false, () => this.play(model, "loop", true));
-      this.play(mask);
-      this.setData({
-        scanning: false,
-        photoing: true,
-      });
-    }
-  },
-
-  stopAnim() {
-    this.playing = false;
-    this.stop(this.model);
-    this.stop(this.mask);
-    this.setData({
-      scanning: true,
-      photoing: false,
-    });
-  },
-
-  loadSceneStart: function () {},
-
-  tracked: function () {
-    this.playAnim();
-  },
-
-  lostTrack: function () {
-    this.stopAnim();
-  },
-
   takePhoto: async function () {
     wx.showLoading({ title: "拍照中...", mask: true });
     const photoPath = await this.view.takePhoto();
@@ -147,14 +137,7 @@ Page({
     });
   },
 
-  downloadAssetProgress: function ({ detail }) {
-    this.setData({
-      progress: detail * 100,
-    });
-  },
-
   onShareAppMessage() {
     return this.shareInfo;
   },
-
 });

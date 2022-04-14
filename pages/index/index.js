@@ -9,7 +9,7 @@ Page({
   shareInfo: {
     path: "/pages/index/index",
     title: "AR元宇宙开启 伊弥戟王者出击",
-    imageUrl: "/assets/share.jpg"
+    imageUrl: "/assets/share.jpg",
   },
   async start() {
     const userAuthorize = await setAuth(
@@ -20,10 +20,9 @@ Page({
     if (!userAuthorize) return;
     wx.navigateTo({
       url: "../scene/scene",
-      // url: "../photo/photo",
     });
   },
   onShareAppMessage() {
-    return this.shareInfo
+    return this.shareInfo;
   },
 });
