@@ -1,4 +1,3 @@
-// pages/scene/scene.js
 import { setAuth } from "../../utils/util";
 Page({
   playing: false,
@@ -15,7 +14,7 @@ Page({
     imageUrl: "/assets/share.jpg",
   },
 
-  onLoad: async function (options) {
+  onLoad: async function () {
     wx.setKeepScreenOn({
       keepScreenOn: true,
     });

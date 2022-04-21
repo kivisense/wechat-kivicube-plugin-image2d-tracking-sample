@@ -1,4 +1,3 @@
-<!--pages/scene/scene.wxml-->
 <view wx:if="{{showScene}}">
     <kivicube-scene
         wx:if="{{showScene}}"

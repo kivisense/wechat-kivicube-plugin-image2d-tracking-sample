@@ -1,4 +1,3 @@
-/* pages/scene/scene.wxss */
 .kivicube {
   position: absolute;
   display: block;

@@ -1,4 +1,3 @@
-<!--index.wxml-->
 <view class="container">
   <image src="../../assets/home/bg.jpg" class="bg" mode="aspectFill"></image>
   <view class="text-box">

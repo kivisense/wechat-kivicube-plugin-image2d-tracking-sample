@@ -1,4 +1,3 @@
-// index.js
 import { setAuth } from "../../utils/util";
 
 // 获取应用实例

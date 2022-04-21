@@ -87,11 +87,6 @@ Page({
       height
     );
 
-    // 直接调用wx.canvasToTempFilePath有几率生成空白图片
-    // 小程序官方文档说要在ctx.draw的回调中执行，但实际调用draw时报错(真机预览 ios: ctx.draw is not a function),故使用setTimeout做处理
-    // await new Promise((resolve) => {
-    //   ctx.draw(true, resolve);
-    // });
     await new Promise((resolve) => {
       setTimeout(resolve, 500);
     });
